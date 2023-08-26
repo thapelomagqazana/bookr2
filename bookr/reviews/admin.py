@@ -4,8 +4,10 @@ from .models import (Publisher, Contributor,
 
 
 class BookAdmin(admin.ModelAdmin):
+    date_hierarchy = 'publication_date'
     list_display = ('title', 'isbn13', 'has_isbn')
     list_filter = ('publisher', 'publication_date')
+    search_fields = ('title', 'isbn__exact', 'publisher__name__startswith')
 
     @admin.display(
         ordering='isbn',
