@@ -1,5 +1,5 @@
 from django.contrib.admin.apps import AdminConfig
 
 
-class ReviewAdminConfig(AdminConfig):
+class ReviewsAdminConfig(AdminConfig):
     default_site = 'admin.BookrAdminSite'
