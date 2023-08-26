@@ -27,6 +27,13 @@ class BookAdmin(admin.ModelAdmin):
         return bool(obj.isbn)
 
 
+class ReviewAdmin(admin.ModelAdmin):
+    exclude = ('date_edited',)
+    fieldsets = (
+        ("Linkage", {"fields": ("creator", "book")}),
+        ("Review content", {"fields": ("content", "rating")}),
+    )
+
 def initialled_name(obj):
     """ obj.first_names='Jerome David',
     obj.last_names='Salinger' => 'Salinger, JD' """
@@ -36,7 +43,11 @@ def initialled_name(obj):
 
 
 class ContributorAdmin(admin.ModelAdmin):
-    list_display = (initialled_name,)
+    # list_display = (initialled_name,)
+
+    list_display = ("last_names", "first_names")
+    ordering = ("last_names",)
+    list_filter = ("last_names",)
 
 
 # Register your models here.
@@ -44,4 +55,4 @@ admin.site.register(Publisher)
 admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(BookContributor)
-admin.site.register(Review)
+admin.site.register(Review, ReviewAdmin)
