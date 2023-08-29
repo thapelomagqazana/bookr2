@@ -26,5 +26,5 @@ urlpatterns = [
     path('books/<int:pk>/', views.book_detail, name='book_detail'),
     # path('', include('reviews.urls')),
     # path('', reviews.views.index),
-    # path('book-search', reviews.views.book_search)
+    path('book-search', views.book_search, name='book_search')
 ]
