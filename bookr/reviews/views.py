@@ -96,5 +96,5 @@ def publisher_edit(request, pk=None):
     else:
         form = PublisherForm(instance=publisher)
 
-    return render(request, "form-example.html",
-                  {"method": request.method, "form": form})
+    return render(request, "reviews/instance-form.html",
+                  {"instance": publisher, "model_type": "Publisher", "form": form})
